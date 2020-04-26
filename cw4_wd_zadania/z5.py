@@ -1,43 +1,45 @@
-class Osoba:
+class C_Aryt:
+    def __init__(self):
+        self.a=1
+        self.r=1
+        self.n=1
 
-    def __init__(self, imie, nazwisko):
-        self.imie = imie
-        self.nazwisko = nazwisko
+    def wyświetl_dane(self):
+        print("a=", +self.a, "r=", +self.r, "n=", +self.n)
 
-    def przedstaw_sie(self):
-        return "{} {}".format(self.imie, self.nazwisko)
+    def pobierz_elementy(self, a1, a2, a3):
+        if a3-a2!=a2-a1:
+            return ("złe dane")
+        self.r=a2-a1
+        self.a=a1
+        self.n=3
 
+    def pobierz_parametry(self, a, r, n):
+        self.a=a
+        self.r=r
+        self.n=n
 
-class Pracownik(Osoba):
+    def policz_sume(self):
+        print("suma to:", end=" ")
+        return (((2*self.a)+((self.n-1)*self.r))*(self.n/2))
 
-    def __init__(self, imie, nazwisko, pensja):
-        Osoba.__init__(self, imie, nazwisko)
-        # lub
-        # super().__init__(imie, nazwisko)
-        self.pensja = pensja
+    def policz_elementy(self, ile):
+        print("kolejne", +ile, "elementów to:", end=" ")
+        for x in range (1,ile+1):
+            print(self.a+(x-1)*self.r, end=" ")
 
-    def przedstaw_sie(self):
-        return "{} {} i zarabiam {}".format(self.imie, self.nazwisko, self.pensja)
+ciag=C_Aryt()
 
+ciag.wyświetl_dane()
+print()
 
-class Menadzer(Pracownik):
+ciag.pobierz_elementy(2,4,6)
+ciag.wyświetl_dane()
+print(ciag.policz_sume())
+print(ciag.policz_elementy(5))
+print()
 
-    def przedstaw_sie(self):
-        return "{} {}, jestem menadżerem i zarabiam {}".format(self.imie, self.nazwisko, self.pensja)
-
-
-adrian = Menadzer("Adrian", "Mikulski", 12000)
-
-
-print(adrian.przedstaw_sie())
-print('isinstance')
-print('(adrian, Osoba):', isinstance(adrian, Osoba))
-print('(adrian, Pracownik):', isinstance(adrian, Pracownik))
-print('(adrian, Menadzer):', isinstance(adrian, Menadzer))
-print("issubclass:")
-print('(Menadzer, Pracownik):', issubclass(Menadzer, Pracownik))
-print('(Menadzer, Osoba):', issubclass(Menadzer, Osoba))
-print('(Osoba, Pracownik):', issubclass(Osoba, Pracownik))
-print('(Osoba, Menadzer):', issubclass(Osoba, Menadzer))
-print('(Pracownik, Osoba):', issubclass(Pracownik, Osoba))
-print('(Pracownik, Menadzer):', issubclass(Pracownik, Menadzer))
+ciag.pobierz_parametry(2,1,7)
+ciag.wyświetl_dane()
+print(ciag.policz_sume())
+print(ciag.policz_elementy(7))
